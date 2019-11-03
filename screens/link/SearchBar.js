@@ -1,13 +1,14 @@
-import React from "react";
-import { Text, View } from "react-native";
-import {SearchBar} from 'react-native-elements';
-class LinkusPage extends React.Component {
+import { SearchBar } from 'react-native-elements';
+
+export default class App extends React.Component {
   state = {
-    search: ""
+    search: '',
   };
+
   updateSearch = search => {
     this.setState({ search });
   };
+
   render() {
     const { search } = this.state;
 
@@ -20,5 +21,3 @@ class LinkusPage extends React.Component {
     );
   }
 }
-
-export default LinkusPage;
