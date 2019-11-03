@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-class HistoryPage extends React.Component {
+class HomePage extends React.Component {
     render() {
         return (
             <View
@@ -11,10 +11,10 @@ class HistoryPage extends React.Component {
                     alignItems: "center"
                 }}
             >
-                <Text>History page</Text>
+                <Text>Home page</Text>
             </View>
         );
     }
 }
 
-export default HistoryPage;
+export default HomePage;

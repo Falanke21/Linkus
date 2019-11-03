@@ -13,7 +13,7 @@ class LoginPage extends React.Component {
             >
                 <Text style={{ fontSize: 30 }}>Linkus login page</Text>
                 <Button
-                    onPress={() => this.props.navigation.navigate("History")}
+                    onPress={() => this.props.navigation.navigate("Home")}
                     title="Login"
                 />
             </View>

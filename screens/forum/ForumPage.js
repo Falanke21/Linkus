@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-class RecordPage extends React.Component {
+class LinkusPage extends React.Component {
     render() {
         return (
             <View
@@ -11,10 +11,10 @@ class RecordPage extends React.Component {
                     alignItems: "center"
                 }}
             >
-                <Text>Record Page</Text>
+                <Text>Linkus Page</Text>
             </View>
         );
     }
 }
 
-export default RecordPage;
+export default LinkusPage;

@@ -5,18 +5,18 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 import LoginPage from "./screens/login/LoginPage";
-import HistoryPage from "./screens/home/HomePage";
-import RecordPage from "./screens/forum/ForumPage";
+import HomePage from "./screens/home/HomePage";
+import LinkusPage from "./screens/forum/ForumPage";
 import ProfilePage from "./screens/profile/ProfilePage"
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
     const { routeName } = navigation.state;
     let iconName;
     switch (routeName) {
-        case "History":
+        case "Home":
             iconName = "md-menu";
             break;
-        case "Record":
+        case "Linkus":
             iconName = "md-headset";
             break;
         case "Profile":
@@ -27,12 +27,12 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     return <Ionicons name={iconName} size={25} color={tintColor} />;
 };
 
-const HistoryStack = createStackNavigator({
-    History: HistoryPage
+const HomeStack = createStackNavigator({
+    Home: HomePage
 });
 
-const RecordStack = createStackNavigator({
-    Record: RecordPage
+const LinkusStack = createStackNavigator({
+    Linkus: LinkusPage
 });
 
 const ProfileStack = createStackNavigator({
@@ -41,8 +41,8 @@ const ProfileStack = createStackNavigator({
 
 const MainStack = createBottomTabNavigator(
     {
-        History: HistoryStack,
-        Record: RecordStack,
+        Home: HomeStack,
+        Linkus: LinkusStack,
         Profile: ProfileStack
     },
     {
