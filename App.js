@@ -6,7 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import LoginPage from "./screens/login/LoginPage";
 import HomePage from "./screens/home/HomePage";
-import LinkusPage from "./screens/forum/ForumPage";
+import LinkusPage from "./screens/link/LinkusPage";
 import ProfilePage from "./screens/profile/ProfilePage"
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
