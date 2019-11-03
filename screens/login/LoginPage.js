@@ -33,7 +33,7 @@ class LoginPage extends React.Component {
               <View>
                 /* Button */
                 <Button
-                  onPress{() =>
+                  onPress={() =>
                     this.props.navigation.navigate("Home")
                   }
                   title="Login"
