@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import {SearchBar} from 'react-native-elements';
+import { SearchBar } from "react-native-elements";
 class LinkusPage extends React.Component {
   state = {
     search: ""
