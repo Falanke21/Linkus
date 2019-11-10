@@ -1,0 +1,53 @@
+[{
+    "category":"所属板块",
+    "publisher": "发帖人ID",
+    "courseid":"课号",
+    "sectionid":"课程号",
+    "content": "帖子内容",
+    "time": "帖子发布的时间(yyyy-mm-dd hh:mm:ss utc)",
+    "activate-time":"帖子激活时间(yyyy-mm-dd hh:mm:ss utc)",
+    "privacy":"(true:有隐私,false:无隐私)",
+    "status": "发布状态(草稿0,发布1,失效2)",
+    "Attended": ["参与人1ID","参与人2ID"],
+    "Requested":[]
+},
+{
+    "category":"Computer Science",
+    "publisher": "鸽子",
+    "courseid":"CSC108",
+    "sectionid":"Lec0101",
+    "content": "CSC108找队友",
+    "time": "帖子发布的时间(2019-11-10 17:37:23 utc)",
+    "activate-time":"帖子激活时间(2019-11-10 17:37:23 utc)",
+    "privacy":"(false)",
+    "status": "发布状态(发布1)",
+    "Attended": ["复读机","真香"],
+    "Requested":[]
+},
+{
+    "category":"Social Science",
+    "publisher": "复读机",
+    "courseid":"PHL100",
+    "sectionid":"Lec0101",
+    "content": "PHL100找队友",
+    "time": "帖子发布的时间(2019-11-11 10:36:23 utc)",
+    "activate-time":"帖子激活时间(2019-11-11 10:36:23 utc)",
+    "privacy":"(true)",
+    "status": "发布状态(发布1)",
+    "Attended": ["鸽子","真香"],
+    "Requested":[]
+},
+{
+    "category":"Life Science",
+    "publisher": "真香",
+    "courseid":"BIO120",
+    "sectionid":"Lec0102",
+    "content": "BIO120找队友",
+    "time": "帖子发布的时间(2019-9-10 17:37:23 utc)",
+    "activate-time":"帖子激活时间(2019-9-10 17:37:23 utc)",
+    "privacy":"(false)",
+    "status": "发布状态(草稿0)",
+    "Attended": ["复读机","鸽子"],
+    "Requested":[]
+}
+]
