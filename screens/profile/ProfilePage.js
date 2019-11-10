@@ -1,5 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCheckSquare, faCoffee, faBars } from '@fortawesome/free-solid-svg-icons'
 
 class ProfilePage extends React.Component {
   render() {
@@ -14,7 +16,7 @@ class ProfilePage extends React.Component {
           <Image
             style={{width: 150, height: 150, borderRadius: 75}}
             source={{uri: 'https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg'}}
-          />
+            />
         </View>
         <View style={styles.profileNameView}>
           <Text style={styles.profileNameFont}>MyName</Text>
@@ -24,17 +26,24 @@ class ProfilePage extends React.Component {
           <View style={styles.profieItemListContainer}>
             <TouchableOpacity
               style={styles.profileListItem}
-            >
-              <Text style={styles.profileItemFont}>My Link</Text>
+              >
+              <View style={{flex:1, justifyContent: 'center', alignItems: 'center', borderWidth: 1}}>
+                <FontAwesomeIcon icon={ faCheckSquare} />
+              </View>
+              <View style={{flex:10}}>
+                <Text style={styles.profileItemFont}>My Link</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.profileListItem}
-            >
+              >
+              <FontAwesomeIcon icon={ faBars} />
               <Text style={styles.profileItemFont}>History Link</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.profileListItem}
-            >
+              >
+              <FontAwesomeIcon icon={ faCoffee} />
               <Text style={styles.profileItemFont}>My Profile</Text>
             </TouchableOpacity>
           </View>
@@ -87,6 +96,7 @@ const styles = StyleSheet.create({
   },
   profileListItem:{
     flex: 2,
+    flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'center',
     backgroundColor: 'rgb(245, 221, 133)',

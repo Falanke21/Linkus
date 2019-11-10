@@ -1,14 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import { Text, View, Button, StyleSheet, TextInput } from "react-native";
 
-class LoginPage extends React.Component {
+export default class LoginPage extends React.Component {
+
   state = {
-    isLoggedIn: false,
-    isCorrectLogin: false,
-    emailPrefix: "",
-    password: "",
-    message: ""
+    usernameInput: "",
+    passwordInput: "",
   };
+
+  passwordInputHandler(input){
+    this.setState({passwordInput: input})
+  }
+  usernameInputHandler(input){
+    this.setState({usernameInput:  input})
+    console.log(this.state.usernameInput)
+  }
+  // const usernameInputHandler=(enteredText)=>{
+  //   setUsernameInput(enteredText);
+  // };
+  // const passwordInputHandler=(enteredText)=>{
+  //   setPasswordInput(enteredText);
+  // };
+
+  submitLoginHandler() {
+    console.log(this.state.usernameInput);
+    console.log(this.state.passwordInput);
+  };
+
+
 
   render() {
     return (
@@ -26,13 +45,15 @@ class LoginPage extends React.Component {
             <TextInput
               placeholder="UT Email"
               textContentType="username"
+              value={this.state.usernameInput}
+              onChangeText={(username)=> this.usernameInputHandler(username)}
               style={{
                 borderColor:"black",
                 borderWidth:1,
                 borderRadius:5,
                 textAlign:'center',
-                width: 120
-                }}
+                width: '100%'
+              }}
               />
           </View>
           <View
@@ -51,36 +72,42 @@ class LoginPage extends React.Component {
             placeholder="Password"
             textContentType="password"
             secureTextEntry={true}
+            onChangeText={(password)=> this.passwordInputHandler(password)}
+            value={this.state.passwordInput}
             style={{
               borderColor:"black",
               borderWidth:1,
               borderRadius:5,
-              textAlign:'center'
-              }}
+              textAlign:'center',
+              width: '65%'
+            }}
 
-          />
+            />
         </View>
         <View style={{
-                flex: 1,
-                borderWidth: 0,
-                borderColor: "black",
-                justifyContent:'center',
-                alignItems: 'center'
-        }}>
+            flex: 1,
+            borderWidth: 0,
+            borderColor: "black",
+            justifyContent:'center',
+            alignItems: 'center',
+            flexDirection:'row'
+          }}>
+          <Button
+            onPress={() => this.submitLoginHandler()}
+            title="Login"
+            />
           <Button
             onPress={() => this.props.navigation.navigate("Home")}
-            title="Login"
-          />
+            title="Navigate"
+            />
         </View>
         <View style={styles.iconSection}>
-          <Text> 怎么固定textInput的长度？ </Text>
         </View>
       </View>
     );
   }
 }
 
-export default LoginPage;
 
 const styles = StyleSheet.create({
   loginBackground: {
