@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'rgb(245, 221, 133)',
     paddingHorizontal: 20,
-    paddingVertical: 3,
+    paddingVertical: 2,
     borderTopWidth: 1,
     borderColor: 'gray',
     borderStyle: 'dashed'
