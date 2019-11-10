@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Header, Tab, Tabs, ScrollableTab } from "native-base";
 import ChatTab from "./ChatTab";
 import StudyTab from "./StudyTab";
-export default class TabsScrollableExample extends Component {
+export default class ForumPage extends Component {
   render() {
     return (
       <Container>
