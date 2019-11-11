@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCheckSquare, faCoffee, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCog, faBars, faPaw, faUser, faHandPeace } from '@fortawesome/free-solid-svg-icons'
 
 class ProfilePage extends React.Component {
   render() {
@@ -9,7 +9,8 @@ class ProfilePage extends React.Component {
       <View style={styles.profileBackground}>
         <View style={styles.profileSettingView}>
           <View style={{flex: 8}}></View>
-          <TouchableOpacity style={{flex: 1, backgroundColor: 'black'}}>
+          <TouchableOpacity style={{flex: 1, backgroundColor: 'white'}}>
+            <FontAwesomeIcon icon={ faCog } />
           </TouchableOpacity>
         </View>
         <View style={styles.profileImageView}>
@@ -27,24 +28,20 @@ class ProfilePage extends React.Component {
             <TouchableOpacity
               style={styles.profileListItem}
               >
-              <View style={{flex:1, justifyContent: 'center', alignItems: 'center', borderWidth: 1}}>
-                <FontAwesomeIcon icon={ faCheckSquare} />
-              </View>
-              <View style={{flex:10}}>
-                <Text style={styles.profileItemFont}>My Link</Text>
-              </View>
+                <FontAwesomeIcon icon={ faHandPeace } />
+                <Text style={styles.profileItemFont}>  我的Link</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.profileListItem}
               >
-              <FontAwesomeIcon icon={ faBars} />
-              <Text style={styles.profileItemFont}>History Link</Text>
+              <FontAwesomeIcon icon={ faPaw } />
+              <Text style={styles.profileItemFont}>  历史Link</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.profileListItem}
               >
-              <FontAwesomeIcon icon={ faCoffee} />
-              <Text style={styles.profileItemFont}>My Profile</Text>
+              <FontAwesomeIcon icon={ faUser } />
+              <Text style={styles.profileItemFont}>  个人信息</Text>
             </TouchableOpacity>
           </View>
           <View style={{flex: 8}}></View>
@@ -66,7 +63,8 @@ const styles = StyleSheet.create({
   profileSettingView: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   profileImageView: {
     flex: 3,
@@ -97,10 +95,10 @@ const styles = StyleSheet.create({
   profileListItem:{
     flex: 2,
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: 'rgb(245, 221, 133)',
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     paddingVertical: 2,
     borderTopWidth: 1,
     borderColor: 'gray',
