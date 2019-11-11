@@ -6,23 +6,28 @@ export default class LoginPage extends React.Component {
   state = {
     usernameInput: "",
     passwordInput: "",
+    correctUsername: "ut",
+    correctPassword: "666666",
+    loginMessage: ""
   };
 
   passwordInputHandler(input){
-    this.setState({passwordInput: input})
+    this.setState({passwordInput:input})
   }
   usernameInputHandler(input){
-    this.setState({usernameInput:  input})
-    console.log(this.state.usernameInput)
+    this.setState({usernameInput:input})
   }
-  // const usernameInputHandler=(enteredText)=>{
-  //   setUsernameInput(enteredText);
-  // };
-  // const passwordInputHandler=(enteredText)=>{
-  //   setPasswordInput(enteredText);
-  // };
 
   submitLoginHandler() {
+    if (this.state.usernameInput == this.state.correctUsername
+        && this.state.passwordInput == this.state.correctPassword){
+      console.log("correct!")
+      this.setState({loginMessage: "Logging in"})
+      this.props.navigation.navigate("Home")
+    }else{
+      console.log("Incorrect")
+      this.setState({loginMessage: "Incorrect Username or Password!"})
+    }
     console.log(this.state.usernameInput);
     console.log(this.state.passwordInput);
   };
@@ -34,14 +39,6 @@ export default class LoginPage extends React.Component {
       <View style={styles.loginBackground}>
         <View style={styles.iconSection}></View>
         <View style={styles.inputBar}>
-          <View style={{flex:1}}></View>
-          <View
-            style={{
-              flex: 2,
-              alignItems: 'flex-end',
-              justifyContent: 'center',
-              /*borderWidth: 1*/
-            }}>
             <TextInput
               placeholder="UT Email"
               textContentType="username"
@@ -52,21 +49,11 @@ export default class LoginPage extends React.Component {
                 borderWidth:1,
                 borderRadius:5,
                 textAlign:'center',
-                width: '100%'
+                width: '40%'
               }}
               />
-          </View>
-          <View
-            style={{
-              flex: 2,
-              alignItems: "flex-start",
-              justifyContent: "center",
-            }}>
             <Text> @mail.utoronto.ca</Text>
-
           </View>
-          <View style={{flex:1}}></View>
-        </View>
         <View style={styles.inputBar}>
           <TextInput
             placeholder="Password"
@@ -79,10 +66,9 @@ export default class LoginPage extends React.Component {
               borderWidth:1,
               borderRadius:5,
               textAlign:'center',
-              width: '65%'
+              width: '70%'
             }}
-
-            />
+          />
         </View>
         <View style={{
             flex: 1,
@@ -90,18 +76,17 @@ export default class LoginPage extends React.Component {
             borderColor: "black",
             justifyContent:'center',
             alignItems: 'center',
-            flexDirection:'row'
+            flexDirection:'column'
           }}>
           <Button
             onPress={() => this.submitLoginHandler()}
             title="Login"
-            />
-          <Button
-            onPress={() => this.props.navigation.navigate("Home")}
-            title="Navigate"
-            />
+          />
+          <Text>{this.state.loginMessage}</Text>
         </View>
         <View style={styles.iconSection}>
+          <Text> username: ut </Text>
+          <Text> password: 666666</Text>
         </View>
       </View>
     );
@@ -115,7 +100,7 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   iconSection: {
-    flex: 8,
+    flex: 6,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "rgb(138, 193, 230)"
