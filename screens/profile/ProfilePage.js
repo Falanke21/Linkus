@@ -1,9 +1,13 @@
 import React from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity, Button } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCheckSquare, faCog, faBars, faPaw, faUser, faHandPeace } from '@fortawesome/free-solid-svg-icons'
 
-class ProfilePage extends React.Component {
+export default class ProfilePage extends React.Component {
+  pressLogin(){
+    this.props.navigation.navigate("Login")
+  };
+
   render() {
     return (
       <View style={styles.profileBackground}>
@@ -23,7 +27,6 @@ class ProfilePage extends React.Component {
           <Text style={styles.profileNameFont}>MyName</Text>
         </View>
         <View style={styles.profileBottomSection}>
-
           <View style={styles.profieItemListContainer}>
             <TouchableOpacity
               style={styles.profileListItem}
@@ -41,18 +44,20 @@ class ProfilePage extends React.Component {
               style={styles.profileListItem}
               >
               <FontAwesomeIcon icon={ faUser } />
-              <Text style={styles.profileItemFont}>  个人信息</Text>
+              <Text style={styles.profileItemFont}>  我的资料</Text>
             </TouchableOpacity>
           </View>
-          <View style={{flex: 8}}></View>
+          <View style={{flex: 8, alignItems:'center', justifyContent: 'center'}}>
+            <Button
+              onPress={() => this.pressLogin()}
+              title="Login"
+            />
+          </View>
         </View>
       </View>
     );
   }
 }
-
-export default ProfilePage;
-
 
 const styles = StyleSheet.create({
   profileBackground: {
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
   profileImageView: {
     flex: 3,
     alignItems: 'center',
-    justifyContent: 'center'
+
   },
   profileNameView: {
     flex: 1,
@@ -103,6 +108,15 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: 'gray',
     borderStyle: 'dashed'
+  },
+  profileItemView:{
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: 'rgb(241, 112, 16)',
+    borderRadius: 5,
+
   },
   profileNameFont:{
     fontSize: 24,

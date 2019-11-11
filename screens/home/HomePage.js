@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-class HomePage extends React.Component {
+export default class HomePage extends React.Component {
   render() {
     return (
       <View
@@ -17,4 +17,3 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;

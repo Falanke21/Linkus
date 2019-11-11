@@ -68,11 +68,11 @@ const MainStack = createBottomTabNavigator(
 
 const RootStack = createStackNavigator(
   {
-    Login: {
-      screen: LoginPage
-    },
     Main: {
       screen: MainStack
+    },
+    Login: {
+      screen: LoginPage
     }
   },
   {
