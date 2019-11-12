@@ -31,43 +31,45 @@ export default class ProfilePage extends React.Component {
             <FontAwesomeIcon icon={faCog} />
           </TouchableOpacity>
         </View>
-        <View style={styles.profileImageView}>
-          <Image
-            style={{width: 150, height: 150, borderRadius: 75}}
-            source={{
-              uri:
-                'https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg',
-            }}
-          />
+        <View style={styles.profileBasicInfoView}>
+          <View style={styles.profileImageView}>
+            <Image
+              style={{width: 80, height: 80, borderRadius: 40}}
+              source={{
+                uri:
+                  'https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg',
+              }}
+            />
+          </View>
+          <View style={styles.profileNameView}>
+            <Text style={styles.profileNameFont}>MyName</Text>
+          </View>
         </View>
-        <View style={styles.profileNameView}>
-          <Text style={styles.profileNameFont}>MyName</Text>
-        </View>
+
         <View style={styles.profileBottomSection}>
-          
-            <TouchableOpacity style={styles.profileListItem}>
-              <FontAwesomeIcon icon={faHandPeace} />
-              <Text style={styles.profileItemFont}> 我的Link</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.profileListItem}>
-              <FontAwesomeIcon icon={faPaw} />
-              <Text style={styles.profileItemFont}> 历史Link</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.profileListItem}>
-              <FontAwesomeIcon icon={faUser} />
-              <Text style={styles.profileItemFont}> 我的资料</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.profileListItem}>
-              <FontAwesomeIcon icon={faShieldAlt} />
-              <Text style={styles.profileItemFont}> 账户信息</Text>
-            </TouchableOpacity>
-          
+          <TouchableOpacity style={styles.profileListItem}>
+            <FontAwesomeIcon icon={faHandPeace} />
+            <Text style={styles.profileItemFont}> 我的Link</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.profileListItem}>
+            <FontAwesomeIcon icon={faPaw} />
+            <Text style={styles.profileItemFont}> 历史Link</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.profileListItem}>
+            <FontAwesomeIcon icon={faUser} />
+            <Text style={styles.profileItemFont}> 我的资料</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.profileListItem}>
+            <FontAwesomeIcon icon={faShieldAlt} />
+            <Text style={styles.profileItemFont}> 账户信息</Text>
+          </TouchableOpacity>
+
           <View
             style={{flex: 8, alignItems: 'center', justifyContent: 'center'}}
           >
-            <Button 
-              onPress={() => this.pressLogin()} 
-              title="Login" 
+            <Button
+              onPress={() => this.pressLogin()}
+              title="Login"
               type="outline"
             />
           </View>
@@ -88,23 +90,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  profileImageView: {
-    flex: 3,
+  profileBasicInfoView: {
+    flex: 2,
     alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
-  profileNameView: {
-    flex: 1,
+  profileImageView: {
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomWidth: 1,
-    borderColor: 'gray',
+  },
+  profileNameView: {
+    flex: 5,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   profileBottomSection: {
-    flex: 8,
+    flex: 9,
     alignItems: 'center',
     //justifyContent: 'center',
     flexDirection: 'column',
-    width:'100%',
+    width: '100%',
     padding: 10,
   },
   profieItemListContainer: {
@@ -118,7 +125,7 @@ const styles = StyleSheet.create({
     flex: 2,
     flexDirection: 'row',
     alignItems: 'center',
-    width:'100%',
+    width: '100%',
     justifyContent: 'flex-start',
     backgroundColor: 'rgb(245, 221, 133)',
     paddingHorizontal: 15,
@@ -126,7 +133,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: 'white',
     borderStyle: 'dashed',
-    borderRadius: 5
+    borderRadius: 5,
   },
   profileItemView: {
     flex: 1,

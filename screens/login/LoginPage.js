@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {Text, View, Button, StyleSheet, TextInput} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default class LoginPage extends React.Component {
   state = {
     usernameInput: '',
     passwordInput: '',
-    correctUsername: 'ut',
+    correctUsername: 'ada',
     correctPassword: '666666',
     loginMessage: '',
   };
@@ -20,7 +20,7 @@ export default class LoginPage extends React.Component {
 
   submitLoginHandler() {
     if (
-      this.state.usernameInput == this.state.correctUsername &&
+      this.state.usernameInput.toLowerCase() == this.state.correctUsername &&
       this.state.passwordInput == this.state.correctPassword
     ) {
       console.log('correct!');
@@ -53,7 +53,7 @@ export default class LoginPage extends React.Component {
                 borderRadius: 5,
                 textAlign: 'center',
                 width: '40%',
-                alignContent:"flex-start"
+                alignContent: 'flex-start',
               }}
             />
             <Text> @mail.utoronto.ca</Text>
@@ -84,7 +84,7 @@ export default class LoginPage extends React.Component {
             }}
           >
             <TouchableOpacity>
-              <Text style={{color:'blue'}}>Forgot your password?</Text>
+              <Text style={{color: 'blue'}}>Forgot your password?</Text>
             </TouchableOpacity>
             <Text>{this.state.loginMessage}</Text>
             <Button
@@ -94,8 +94,8 @@ export default class LoginPage extends React.Component {
                 padding: 10,
               }}
             />
-            <Text> username: ut </Text>
-            <Text> password: 666666 </Text>
+            <Text> username: {this.state.correctUsername} </Text>
+            <Text> password: {this.state.correctPassword} </Text>
           </View>
         </View>
       </View>
