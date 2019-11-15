@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import { SearchBar } from "react-native-elements";
 import PostingCard from "./PostingCard";
+import SearchBar2 from "./SearchBar2.js"
 import { Container, Header, Content } from "native-base";
 
 class LinkusPage extends React.Component {
@@ -24,13 +25,18 @@ class LinkusPage extends React.Component {
       // <PostingCard />
       // </View>
       <Container>
-        <Header>
+        {/* <Header>
           <SearchBar
             placeholder="Type Here..."
             onChangeText={this.updateSearch}
             value={search}
           />
+        </Header>  */}
+        <Header>
+          <SearchBar2 />
         </Header>
+        
+       
         <Content padder>
           <PostingCard />
           <PostingCard />
