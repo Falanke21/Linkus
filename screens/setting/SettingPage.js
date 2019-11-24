@@ -34,7 +34,7 @@ export default class SettingPage extends React.Component {
             style={{padding: 30, width:"100%", alignItems: 'center', justifyContent: 'center'}}
           >
             <Button
-              onPress={() => this.pressLogin()}
+              onPress={() => this.props.navigation.navigate('Login')}
               title="Login"
               type="outline"
               buttonStyle={{width: 300}}
