@@ -30,6 +30,23 @@ export default class SettingPage extends React.Component {
             />
           ))}
         </View>
+        <View
+            style={{padding: 30, width:"100%", alignItems: 'center', justifyContent: 'center'}}
+          >
+            <Button
+              onPress={() => this.pressLogin()}
+              title="Login"
+              type="outline"
+              buttonStyle={{width: 300}}
+            />
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('Profile');
+              }}
+            >
+              <Text>Cancel</Text>
+            </TouchableOpacity>
+          </View>
       </View>
     );
   }

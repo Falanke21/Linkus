@@ -91,7 +91,7 @@ const RootStack = createStackNavigator({
         screen: SettingStack
     },
     MyLink: {
-        screen: MyLinkPage
+        screen: MyLinkStack
     }
 
 }, {

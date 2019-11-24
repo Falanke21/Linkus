@@ -15,9 +15,6 @@ import {
 
 
 export default class ProfilePage extends React.Component {
-  state = {
-    pageTitle:"",
-  }
 
   pressLogin() {
     this.props.navigation.navigate('Login');
@@ -25,8 +22,12 @@ export default class ProfilePage extends React.Component {
 
   pressList(title){
     console.log(title)
-    
-    this.props.navigation.navigate('Login');
+    console.log(title == "My Link")
+    if (title == "My Link"){
+      this.props.navigation.navigate('MyLink');
+    }else if (title == "My History"){
+      this.props.navigation.navigate('MyLink');
+    }
   }
 
   render() {
@@ -71,16 +72,6 @@ export default class ProfilePage extends React.Component {
                 chevron
               />
             ))}
-          </View>
-
-          <View
-            style={{flex: 8, alignItems: 'center', justifyContent: 'center'}}
-          >
-            <Button
-              onPress={() => this.pressLogin()}
-              title="Login"
-              type="outline"
-            />
           </View>
         </View>
       </View>
