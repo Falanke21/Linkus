@@ -7,13 +7,13 @@ export default StyleSheet.create({
     flexDirection: "column"
   },
   profileSettingView: {
-    flex: 1,
+    height: "5%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center"
   },
   profileBasicInfoView: {
-    flex: 2,
+    height: "15%",
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "flex-start"
@@ -29,14 +29,14 @@ export default StyleSheet.create({
     justifyContent: "center"
   },
   profileBottomSection: {
-    flex: 9,
+    height: "80%",
     alignItems: "center",
     //justifyContent: 'center',
     flexDirection: "column",
     width: "100%",
     padding: 10
   },
-  profieItemListContainer: {
+  profileItemListContainer: {
     flex: 6,
     flexDirection: "column",
     //justifyContent: 'space-around',
