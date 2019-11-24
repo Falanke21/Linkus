@@ -15,7 +15,17 @@ import {
 
 
 export default class ProfilePage extends React.Component {
+  state = {
+    pageTitle:"",
+  }
+
   pressLogin() {
+    this.props.navigation.navigate('Login');
+  }
+
+  pressList(title){
+    console.log(title)
+    
     this.props.navigation.navigate('Login');
   }
 
@@ -24,7 +34,12 @@ export default class ProfilePage extends React.Component {
       <View style={styles.profileBackground}>
         <View style={styles.profileSettingView}>
           <View style={{flex: 8}}></View>
-          <TouchableOpacity style={{flex: 1, backgroundColor: 'white'}}>
+          <TouchableOpacity 
+            style={{flex: 1, backgroundColor: 'white'}}
+            onPress={() => {
+                this.props.navigation.navigate('Setting');
+              }}
+          >
             <FontAwesomeIcon icon={faCog} />
           </TouchableOpacity>
         </View>
@@ -47,15 +62,15 @@ export default class ProfilePage extends React.Component {
         
           <View style={{height:"85%", width:"100%"}}>
             {list.map((item, i) => (
-            <ListItem
-            key={i}
-            title={item.title}
-            leftIcon={{ name: item.icon }}
-            bottomDivider
-            chevron
-            />
-            ))
-              }
+              <ListItem
+                key={i}
+                title={item.title}
+                leftIcon={{ name: item.icon }}
+                onPress={()=> this.pressList(item.title)}
+                bottomDivider
+                chevron
+              />
+            ))}
           </View>
 
           <View
