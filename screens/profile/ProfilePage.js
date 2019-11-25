@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Button,
-} from 'react-native';
+import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import styles from './Styles';
+import {Button, ListItem} from 'react-native-elements';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   faShieldAlt,
@@ -17,9 +12,22 @@ import {
   faHandPeace,
 } from '@fortawesome/free-solid-svg-icons';
 
+
+
 export default class ProfilePage extends React.Component {
+
   pressLogin() {
     this.props.navigation.navigate('Login');
+  }
+
+  pressList(title){
+    console.log(title)
+    console.log(title == "My Link")
+    if (title == "My Link"){
+      this.props.navigation.navigate('MyLink');
+    }else if (title == "My History"){
+      this.props.navigation.navigate('MyLink');
+    }
   }
 
   render() {
@@ -27,7 +35,12 @@ export default class ProfilePage extends React.Component {
       <View style={styles.profileBackground}>
         <View style={styles.profileSettingView}>
           <View style={{flex: 8}}></View>
-          <TouchableOpacity style={{flex: 1, backgroundColor: 'white'}}>
+          <TouchableOpacity 
+            style={{flex: 1, backgroundColor: 'white'}}
+            onPress={() => {
+                this.props.navigation.navigate('Setting');
+              }}
+          >
             <FontAwesomeIcon icon={faCog} />
           </TouchableOpacity>
         </View>
@@ -47,31 +60,18 @@ export default class ProfilePage extends React.Component {
         </View>
 
         <View style={styles.profileBottomSection}>
-          <TouchableOpacity style={styles.profileListItem}>
-            <FontAwesomeIcon icon={faHandPeace} />
-            <Text style={styles.profileItemFont}> 我的Link</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.profileListItem}>
-            <FontAwesomeIcon icon={faPaw} />
-            <Text style={styles.profileItemFont}> 历史Link</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.profileListItem}>
-            <FontAwesomeIcon icon={faUser} />
-            <Text style={styles.profileItemFont}> 我的资料</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.profileListItem}>
-            <FontAwesomeIcon icon={faShieldAlt} />
-            <Text style={styles.profileItemFont}> 账户信息</Text>
-          </TouchableOpacity>
-
-          <View
-            style={{flex: 8, alignItems: 'center', justifyContent: 'center'}}
-          >
-            <Button
-              onPress={() => this.pressLogin()}
-              title="Login"
-              type="outline"
-            />
+        
+          <View style={{height:"85%", width:"100%"}}>
+            {list.map((item, i) => (
+              <ListItem
+                key={i}
+                title={item.title}
+                leftIcon={{ name: item.icon }}
+                onPress={()=> this.pressList(item.title)}
+                bottomDivider
+                chevron
+              />
+            ))}
           </View>
         </View>
       </View>
@@ -79,75 +79,22 @@ export default class ProfilePage extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  profileBackground: {
-    flex: 1,
-    flexDirection: 'column',
+
+const list = [
+  {
+    title: 'My Link',
+    icon: 'rowing',
   },
-  profileSettingView: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+  {
+    title: 'My History',
+    icon: 'pets',
   },
-  profileBasicInfoView: {
-    flex: 2,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
+  {
+    title: 'My Info',
+    icon: 'perm-identity',
   },
-  profileImageView: {
-    flex: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
+  {
+    title: 'Account Setting',
+    icon: 'account-circle',
   },
-  profileNameView: {
-    flex: 5,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-  },
-  profileBottomSection: {
-    flex: 9,
-    alignItems: 'center',
-    //justifyContent: 'center',
-    flexDirection: 'column',
-    width: '100%',
-    padding: 10,
-  },
-  profieItemListContainer: {
-    flex: 6,
-    flexDirection: 'column',
-    //justifyContent: 'space-around',
-    //borderBottomWidth: 1,
-    width: '100%',
-  },
-  profileListItem: {
-    flex: 2,
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-    justifyContent: 'flex-start',
-    backgroundColor: 'rgb(245, 221, 133)',
-    paddingHorizontal: 15,
-    paddingVertical: 3,
-    borderTopWidth: 1,
-    borderColor: 'white',
-    borderStyle: 'dashed',
-    borderRadius: 5,
-  },
-  profileItemView: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: 'rgb(241, 112, 16)',
-    borderRadius: 5,
-  },
-  profileNameFont: {
-    fontSize: 24,
-    color: 'rgb(241, 112, 16)',
-  },
-  profileItemFont: {
-    fontSize: 18,
-  },
-});
+]

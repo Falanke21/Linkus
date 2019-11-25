@@ -76,6 +76,7 @@ export default class LoginPage extends React.Component {
           </View>
           <View
             style={{
+              height:'20%',
               borderWidth: 0,
               borderColor: 'black',
               justifyContent: 'center',
@@ -96,6 +97,15 @@ export default class LoginPage extends React.Component {
             />
             <Text> username: {this.state.correctUsername} </Text>
             <Text> password: {this.state.correctPassword} </Text>
+          </View>
+          <View style={{height:"40%", alignItems: 'center', justifyContent: 'center'}}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('Profile');
+              }}
+            >
+              <Text>Cancel</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

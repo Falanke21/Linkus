@@ -9,76 +9,94 @@ import HomePage from "./screens/home/HomePage";
 import LinkusPage from "./screens/link/LinkusPage";
 import ProfilePage from "./screens/profile/ProfilePage";
 import ForumPage from "./screens/forum/ForumPage";
+import SettingPage from "./screens/setting/SettingPage";
+import MyLinkPage from "./screens/profile/MyLinkPage";
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
-  const { routeName } = navigation.state;
-  let iconName;
-  switch (routeName) {
-    case "Home":
-      iconName = "md-menu";
-      break;
-    case "Home":
-      iconName = "md-menu";
-      break;
-    case "Linkus":
-      iconName = "md-headset";
-      break;
-    case "Profile":
-      iconName = "md-person";
-      break;
-  }
+    const { routeName } = navigation.state;
+    let iconName;
+    switch (routeName) {
+        case "Home":
+            iconName = "md-menu";
+            break;
+        case "Linkus":
+            iconName = "md-headset";
+            break;
+        case "Profile":
+            iconName = "md-person";
+            break;
+        case "Setting":
+            iconName = "md-person";
+            break;
+    }
 
-  return <Ionicons name={iconName} size={25} color={tintColor} />;
+    return <Ionicons name = { iconName }
+    size = { 25 }
+    color = { tintColor }
+    />;
 };
 
 const HomeStack = createStackNavigator({
-  Home: HomePage
+    Home: HomePage
 });
 
 const ForumStack = createStackNavigator({
-  Forum: ForumPage
+    Forum: ForumPage
 });
 
 const LinkusStack = createStackNavigator({
-  Linkus: LinkusPage
+    Linkus: LinkusPage
 });
 
 const ProfileStack = createStackNavigator({
-  Profile: ProfilePage
+    Profile: ProfilePage
 });
 
-const MainStack = createBottomTabNavigator(
-  {
+const SettingStack = createStackNavigator({
+    Setting: SettingPage
+});
+
+const MyLinkStack = createStackNavigator({
+    MyLink: MyLinkPage
+});
+
+const MainStack = createBottomTabNavigator({
     Home: HomeStack,
     Linkus: LinkusStack,
+    Forum: ForumStack,
     Profile: ProfileStack,
-    Forum: ForumStack
-  },
-  {
+
+}, {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) =>
-        getTabBarIcon(navigation, focused, tintColor)
+        tabBarIcon: ({ focused, tintColor }) =>
+            getTabBarIcon(navigation, focused, tintColor)
     }),
     tabBarOptions: {
-      activeTintColor: "tomato",
-      inactiveTintColor: "gray"
+        activeTintColor: "tomato",
+        inactiveTintColor: "gray"
     }
-  }
-);
+});
 
-const RootStack = createStackNavigator(
-  {
+const RootStack = createStackNavigator({
     Main: {
-      screen: MainStack
+        screen: MainStack
     },
     Login: {
-      screen: LoginPage
+        screen: LoginPage
+    },
+    Forum: {
+        screen: ForumStack
+    },
+    Setting: {
+        screen: SettingStack
+    },
+    MyLink: {
+        screen: MyLinkStack
     }
-  },
-  {
+
+}, {
     mode: "modal",
     headerMode: "none"
-  }
-);
+});
 
 export default createAppContainer(RootStack);

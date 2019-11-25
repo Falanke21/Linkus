@@ -1,18 +1,20 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Button, Modal } from "react-native";
 import { SearchBar } from "react-native-elements";
 import PostingCard from "./PostingCard";
+import PublishFormPage from "./PublishFormPage";
 import SearchBar2 from "./SearchBar2.js";
-import { Container, Header, Content, Button, Icon, Fab} from "native-base";
+import { Container, Header, Content, Icon, Fab} from "native-base";
 
-// Trying to solve the font issue:
-// import { Font, AppLoading } from 'expo';
+
 
 class LinkusPage extends React.Component {
   
   state = {
     search: "",
+    modalVisible:false
   };
+
   updateSearch = search => {
     this.setState({ search });
   };
@@ -21,34 +23,13 @@ class LinkusPage extends React.Component {
     super(props)
     this.state = {
       active: false,
-      /*
-      //Trying to solve the font issue
-      loading: true
-      */
+     
     };
   }
-  /*
-  // Trying to solve the font issue
-  async componentWillMount() {
-    await Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
-    });
-    this.setState({ loading: false });
-  }
-*/
+ 
   render() {
     const { search } = this.state;
-   /*
-   //Trying to solve the font issue
-    if (this.state.loading) {
-      return (
-        <Root>
-          <AppLoading />
-        </Root>
-      );
-    }
-    */
+   
     return (
       // <View>
       // <SearchBar
@@ -70,32 +51,49 @@ class LinkusPage extends React.Component {
         </Header>  */}
         <Header>
           <SearchBar2 />
+          <Button title="post"
+          onPress={() => this.setState({modalVisible:true})}>
+            <Text>post</Text>
+          </Button>
         </Header>
-
-
+        
+        <Modal
+          animationType="none"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => this.setState({modalVisible:false})}
+        >
+          <PublishFormPage />
+          <Button
+            onPress={() => this.setState({modalVisible:false})}
+            title="取消"
+            />
+        </Modal>
+       
         <Content padder>
           <PostingCard />
           <PostingCard />
           <PostingCard />
          
         </Content>
-
+        
         <Fab
-            active={this.state.active}
-            direction="up"
-            containerStyle={{ }}
-            style={{ backgroundColor: '#5067FF' }}
-            position="bottomRight"
-            onPress={() => this.setState({ active: !this.state.active })}>
-            
-            <Icon name="ios-arrow-up"/>
-            <Button onPress={() => alert("Write Something (except you can't write currently :D)")} style={{ backgroundColor: '#3B5998' }}>
-              <Icon name="add" />
-            </Button>
-            <Button onPress={() => alert("Choose a post to activate (except you can't choose currently :D)")} style={{ backgroundColor: '#DD5144' }}>
-            <Icon name="ios-flame" />
-            </Button>
-          </Fab>
+        active={this.state.active}
+        direction="up"
+        containerStyle={{ }}
+        style={{ backgroundColor: '#5067FF' }}
+        position="bottomRight"
+        onPress={() => this.setState({ active: !this.state.active })}>
+        
+        <Icon name="ios-arrow-up"/>
+        <Button onPress={() => this.setState({modalVisible:true})} style={{ backgroundColor: '#3B5998' }}>
+          <Icon name="add" />
+        </Button>
+        <Button onPress={() => alert("Choose a post to activate (except you can't choose currently :D)")} style={{ backgroundColor: '#DD5144' }}>
+        <Icon name="ios-flame" />
+        </Button>
+      </Fab>
+        
 
       </Container>
     );
