@@ -13,7 +13,7 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   profileBasicInfoView: {
-    height: "15%",
+    height: "10%",
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "flex-start"
@@ -66,8 +66,7 @@ export default StyleSheet.create({
     borderRadius: 5
   },
   profileNameFont: {
-    fontSize: 24,
-    color: "rgb(241, 112, 16)"
+    fontSize: 20,
   },
   profileItemFont: {
     fontSize: 18

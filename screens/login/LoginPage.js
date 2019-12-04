@@ -35,6 +35,8 @@ export default class LoginPage extends React.Component {
   }
 
   render() {
+    const {goBack} = this.props.navigation;
+
     return (
       <View style={styles.loginBackground}>
         <View style={styles.iconSection}></View>
@@ -50,7 +52,7 @@ export default class LoginPage extends React.Component {
               style={{
                 borderColor: 'black',
                 borderWidth: 1,
-                borderRadius: 5,
+                borderRadius: 15,
                 textAlign: 'center',
                 width: '40%',
                 alignContent: 'flex-start',
@@ -68,7 +70,7 @@ export default class LoginPage extends React.Component {
               style={{
                 borderColor: 'black',
                 borderWidth: 1,
-                borderRadius: 5,
+                borderRadius: 15,
                 textAlign: 'center',
                 width: '70%',
               }}
@@ -100,9 +102,7 @@ export default class LoginPage extends React.Component {
           </View>
           <View style={{height:"40%", alignItems: 'center', justifyContent: 'center'}}>
             <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate('Profile');
-              }}
+              onPress={() => goBack()}
             >
               <Text>Cancel</Text>
             </TouchableOpacity>

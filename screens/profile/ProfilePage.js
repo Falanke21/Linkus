@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import styles from './Styles';
-import {Button, ListItem} from 'react-native-elements';
+import {Button, ListItem, Divider} from 'react-native-elements';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   faShieldAlt,
@@ -15,19 +15,19 @@ import {
 
 
 export default class ProfilePage extends React.Component {
+  static navigationOptions = {
+    title: '我的',
+    headerStyle: {
+      backgroundColor: '#ffe066',
+    },
+  };
 
   pressLogin() {
     this.props.navigation.navigate('Login');
   }
 
-  pressList(title){
-    console.log(title)
-    console.log(title == "My Link")
-    if (title == "My Link"){
-      this.props.navigation.navigate('MyLink');
-    }else if (title == "My History"){
-      this.props.navigation.navigate('MyLink');
-    }
+  pressList(link){
+    this.props.navigation.navigate(link);
   }
 
   render() {
@@ -47,7 +47,7 @@ export default class ProfilePage extends React.Component {
         <View style={styles.profileBasicInfoView}>
           <View style={styles.profileImageView}>
             <Image
-              style={{width: 80, height: 80, borderRadius: 40}}
+              style={{width: 70, height: 70, borderRadius: 10}}
               source={{
                 uri:
                   'https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg',
@@ -55,20 +55,22 @@ export default class ProfilePage extends React.Component {
             />
           </View>
           <View style={styles.profileNameView}>
-            <Text style={styles.profileNameFont}>MyName</Text>
+            <Text style={styles.profileNameFont}>Frank Hua</Text>
+            <Text style={{color:'gray'}}>My Name is Frank!</Text>
           </View>
         </View>
 
         <View style={styles.profileBottomSection}>
-        
+          
           <View style={{height:"85%", width:"100%"}}>
+          <Divider/>
             {list.map((item, i) => (
               <ListItem
                 key={i}
                 title={item.title}
                 leftIcon={{ name: item.icon }}
-                onPress={()=> this.pressList(item.title)}
-                bottomDivider
+                onPress={()=> this.pressList(item.link)}
+                //bottomDivider
                 chevron
               />
             ))}
@@ -82,19 +84,23 @@ export default class ProfilePage extends React.Component {
 
 const list = [
   {
-    title: 'My Link',
+    title: '正在 Link',
     icon: 'rowing',
+    link: 'MyLink',
   },
   {
-    title: 'My History',
+    title: 'Link 历史',
     icon: 'pets',
+    link: 'MyHistory',
   },
   {
-    title: 'My Info',
+    title: '个人资料',
     icon: 'perm-identity',
+    link: 'MyInfo',
   },
   {
     title: 'Account Setting',
     icon: 'account-circle',
+    link: 'AccountSetting',
   },
 ]
