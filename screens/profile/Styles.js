@@ -66,7 +66,7 @@ export default StyleSheet.create({
     borderRadius: 5,
   },
   profileNameFont: {
-    fontSize: 20,
+    fontSize: 23,
   },
   profileItemFont: {
     fontSize: 18,
