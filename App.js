@@ -4,7 +4,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {Ionicons} from '@expo/vector-icons';
 
-import LoginPage from './screens/login/LoginPage';
+import LoginPage from './screens/security/LoginPage';
 import HomePage from './screens/home/HomePage';
 import LinkusPage from './screens/link/LinkusPage';
 import ProfilePage from './screens/profile/ProfilePage';
@@ -12,26 +12,6 @@ import ForumPage from './screens/forum/ForumPage';
 import SettingPage from './screens/setting/SettingPage';
 import MyLinkPage from './screens/profile/MyLinkPage';
 
-const getTabBarIcon = (navigation, focused, tintColor) => {
-  const {routeName} = navigation.state;
-  let iconName;
-  switch (routeName) {
-    case 'Home':
-      iconName = 'md-menu';
-      break;
-    case 'Linkus':
-      iconName = 'md-headset';
-      break;
-    case 'Profile':
-      iconName = 'md-person';
-      break;
-    case 'Setting':
-      iconName = 'md-person';
-      break;
-  }
-
-  return <Ionicons name={iconName} size={25} color={tintColor} />;
-};
 
 const HomeStack = createStackNavigator(
   {
@@ -88,13 +68,25 @@ const ProfileStack = createStackNavigator(
   }
 );
 
+const SecurityStack = createStackNavigator(
+  {
+    Login: LoginPage,
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#ffe066',
+      },
+    },
+  }
+);
 
 const MainStack = createBottomTabNavigator(
   {
-    Home: HomeStack,
-    Linkus: LinkusStack,
-    Forum: ForumStack,
-    Profile: ProfileStack,
+    首页: HomeStack,
+    Link: LinkusStack,
+    论坛: ForumStack,
+    我: ProfileStack,
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
@@ -108,13 +100,35 @@ const MainStack = createBottomTabNavigator(
   }
 );
 
+
+const getTabBarIcon = (navigation, focused, tintColor) => {
+  const {routeName} = navigation.state;
+  let iconName;
+  switch (routeName) {//icon use ionicon
+    case '首页':
+      iconName = 'md-compass';
+      break;
+    case 'Link':
+      iconName = 'md-bonfire';
+      break;
+    case '论坛':
+      iconName = 'md-beer';
+      break;
+    case '我':
+      iconName = 'md-finger-print';
+      break;
+  }
+
+  return <Ionicons name={iconName} size={25} color={tintColor} />;
+};
+
 const RootStack = createStackNavigator(
   {
     Main: {
       screen: MainStack,
     },
-    Login: {
-      screen: LoginPage,
+    Security: {
+      screen: SecurityStack,
     },
     Forum: {
       screen: ForumStack,
