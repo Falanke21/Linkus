@@ -14,7 +14,7 @@ export default class CardItemButton extends Component {
   render() {
     return (
       <Card>
-        <CardItem header button onPress={() => alert('咕咕咕')}>
+        <CardItem header button onPress={() => alert('咕咕咕')} style={{backgroundColor:"#FFFFFF"}}>
           <Left>
             <Thumbnail
               source={{
