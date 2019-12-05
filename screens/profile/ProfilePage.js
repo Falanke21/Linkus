@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import styles from './Styles';
-import {Button, ListItem, Divider, Icon} from 'react-native-elements';
+import {Button, ListItem, Divider, Icon, Avatar} from 'react-native-elements';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   faShieldAlt,
@@ -44,16 +44,25 @@ export default class ProfilePage extends React.Component {
         <View style={{height: '3%'}}></View>
         <View style={styles.profileBasicInfoView}>
           <View style={styles.profileImageView}>
-            <Image
+            <Avatar
+              source={{
+                uri:
+                  'https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg',
+              }}
+              avatarStyle={{width: 70, height: 70}}
+              containerStyle={{width: 70, height: 70}}
+              rounded
+            />
+            {/*<Image
               style={{width: 70, height: 70, borderRadius: 10}}
               source={{
                 uri:
                   'https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg',
               }}
-            />
+            />*/}
           </View>
           <View style={styles.profileNameView}>
-            <Text style={styles.profileNameFont}>Frank Hua</Text>
+            <Text style={styles.profileNameFont}>大橙吱</Text>
             <Text style={{color: 'gray'}}>My Name is Frank!</Text>
           </View>
         </View>
@@ -66,7 +75,8 @@ export default class ProfilePage extends React.Component {
               <ListItem
                 key={i}
                 title={item.title}
-                leftIcon={{name: item.icon}}
+                titleStyle={{fontSize:16}}
+                leftIcon={{name: item.icon, color: '#000000'}}
                 onPress={() => this.pressList(item.link)}
                 containerStyle={{height: 50}}
                 //bottomDivider
@@ -83,23 +93,24 @@ export default class ProfilePage extends React.Component {
 
 const list = [
   {
-    title: '正在 Link',
-    icon: 'rowing',
+    // icon use material
+    title: '我的Link',
+    icon: 'all-inclusive',
     link: 'MyLink',
   },
   {
-    title: 'Link 历史',
+    title: '消息通知',
+    icon: 'notifications',
+    link: 'Notification',
+  },
+  {
+    title: 'Link历史',
     icon: 'pets',
     link: 'MyHistory',
   },
   {
     title: '个人资料',
-    icon: 'perm-identity',
+    icon: 'face',
     link: 'MyInfo',
-  },
-  {
-    title: 'Account Setting',
-    icon: 'account-circle',
-    link: 'AccountSetting',
   },
 ];
