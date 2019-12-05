@@ -59,13 +59,13 @@ export default class SettingPage extends React.Component {
             type="outline"
             buttonStyle={{width: 300}}
           />
-          <TouchableOpacity
+          {/*<TouchableOpacity
             onPress={() => {
               this.props.navigation.navigate('Profile');
             }}
           >
             <Text>Cancel</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
         </View>
       </View>
     );
@@ -75,35 +75,43 @@ export default class SettingPage extends React.Component {
 const list1 = [
   {
     title: '账号管理',
-    icon: 'rowing',
+    icon: 'account-box',
+  },
+  {
+    title: '安全设置',
+    icon: 'security',
   },
   {
     title: '隐私设置',
-    icon: 'pets',
+    icon: 'fingerprint',
   },
 ];
 
 const list2 = [
   {
     title: '消息提醒',
-    icon: 'account-circle',
+    icon: 'notifications-active',
   },
   {
-    title: '语言',
-    icon: 'rowing',
+    title: '主题',
+    icon: 'texture',
   },
   {
     title: '清理缓存',
-    icon: 'pets',
+    icon: 'disc-full',
   },
 ];
 const list3 = [
   {
+    title: '举报',
+    icon: 'flag',
+  },
+  {
     title: '反馈与帮助',
-    icon: 'account-circle',
+    icon: 'sentiment-very-satisfied',
   },
   {
     title: '关于Linkus',
-    icon: 'account-circle',
+    icon: 'all-inclusive',
   },
 ];
