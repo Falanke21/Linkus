@@ -76,9 +76,11 @@ const ProfileStack = createStackNavigator(
   {
     Profile: ProfilePage,
     MyLink: MyLinkPage,
+    Setting: SettingPage,
   },
   {
     defaultNavigationOptions: {
+      initialRouteName: 'Profile',
       headerStyle: {
         backgroundColor: '#ffe066',
       },
@@ -86,18 +88,6 @@ const ProfileStack = createStackNavigator(
   }
 );
 
-const SettingStack = createStackNavigator(
-  {
-    Setting: SettingPage,
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#ffe066',
-      },
-    },
-  }
-);
 
 const MainStack = createBottomTabNavigator(
   {
@@ -128,9 +118,6 @@ const RootStack = createStackNavigator(
     },
     Forum: {
       screen: ForumStack,
-    },
-    Setting: {
-      screen: SettingStack,
     },
     Profile: {
       screen: ProfileStack,

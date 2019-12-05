@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import styles from './Styles';
-import {Button, ListItem, Divider} from 'react-native-elements';
+import {Button, ListItem, Divider, Icon} from 'react-native-elements';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   faShieldAlt,
@@ -12,38 +12,42 @@ import {
   faHandPeace,
 } from '@fortawesome/free-solid-svg-icons';
 
-
-
 export default class ProfilePage extends React.Component {
-  static navigationOptions = {
-    title: '我的',
-    headerStyle: {
-      backgroundColor: '#ffe066',
-    },
+  static navigationOptions = ({navigation}) => {
+    return {
+      title: '我',
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Setting');
+          }}
+        >
+          <FontAwesomeIcon icon={faCog} />
+        </TouchableOpacity>
+      ),
+    };
   };
 
   pressLogin() {
     this.props.navigation.navigate('Login');
   }
 
-  pressList(link){
+  pressList(link) {
     this.props.navigation.navigate(link);
   }
 
   render() {
     return (
       <View style={styles.profileBackground}>
-        <View style={styles.profileSettingView}>
-          <View style={{flex: 8}}></View>
-          <TouchableOpacity 
+        {/*<TouchableOpacity
             style={{flex: 1, backgroundColor: 'white'}}
             onPress={() => {
-                this.props.navigation.navigate('Setting');
-              }}
+              this.props.navigation.navigate('Setting');
+            }}
           >
             <FontAwesomeIcon icon={faCog} />
-          </TouchableOpacity>
-        </View>
+          </TouchableOpacity>*/}
+        <View style={{height: "3%"}}></View>
         <View style={styles.profileBasicInfoView}>
           <View style={styles.profileImageView}>
             <Image
@@ -56,31 +60,33 @@ export default class ProfilePage extends React.Component {
           </View>
           <View style={styles.profileNameView}>
             <Text style={styles.profileNameFont}>Frank Hua</Text>
-            <Text style={{color:'gray'}}>My Name is Frank!</Text>
+            <Text style={{color: 'gray'}}>My Name is Frank!</Text>
           </View>
         </View>
+        <View style={{height: "1%"}}></View>
+
 
         <View style={styles.profileBottomSection}>
-          
-          <View style={{height:"85%", width:"100%"}}>
-          <Divider/>
+          <View style={{height: '85%', width: '100%'}}>
+            <Divider/>
             {list.map((item, i) => (
               <ListItem
                 key={i}
                 title={item.title}
-                leftIcon={{ name: item.icon }}
-                onPress={()=> this.pressList(item.link)}
+                leftIcon={{name: item.icon}}
+                onPress={() => this.pressList(item.link)}
+                containerStyle={{height: 50}}
                 //bottomDivider
                 chevron
               />
             ))}
+            <Divider/>
           </View>
         </View>
       </View>
     );
   }
 }
-
 
 const list = [
   {
@@ -103,4 +109,4 @@ const list = [
     icon: 'account-circle',
     link: 'AccountSetting',
   },
-]
+];
