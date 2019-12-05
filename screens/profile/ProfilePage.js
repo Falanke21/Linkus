@@ -17,13 +17,15 @@ export default class ProfilePage extends React.Component {
     return {
       title: '我',
       headerRight: () => (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Setting');
-          }}
-        >
-          <FontAwesomeIcon icon={faCog} />
-        </TouchableOpacity>
+        <View style={{width: 35}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Setting');
+            }}
+          >
+            <FontAwesomeIcon icon={faCog} size={20} />
+          </TouchableOpacity>
+        </View>
       ),
     };
   };
@@ -39,15 +41,7 @@ export default class ProfilePage extends React.Component {
   render() {
     return (
       <View style={styles.profileBackground}>
-        {/*<TouchableOpacity
-            style={{flex: 1, backgroundColor: 'white'}}
-            onPress={() => {
-              this.props.navigation.navigate('Setting');
-            }}
-          >
-            <FontAwesomeIcon icon={faCog} />
-          </TouchableOpacity>*/}
-        <View style={{height: "3%"}}></View>
+        <View style={{height: '3%'}}></View>
         <View style={styles.profileBasicInfoView}>
           <View style={styles.profileImageView}>
             <Image
@@ -63,12 +57,11 @@ export default class ProfilePage extends React.Component {
             <Text style={{color: 'gray'}}>My Name is Frank!</Text>
           </View>
         </View>
-        <View style={{height: "1%"}}></View>
-
+        <View style={{height: '1%'}}></View>
 
         <View style={styles.profileBottomSection}>
           <View style={{height: '85%', width: '100%'}}>
-            <Divider/>
+            <Divider />
             {list.map((item, i) => (
               <ListItem
                 key={i}
@@ -80,7 +73,7 @@ export default class ProfilePage extends React.Component {
                 chevron
               />
             ))}
-            <Divider/>
+            <Divider />
           </View>
         </View>
       </View>
