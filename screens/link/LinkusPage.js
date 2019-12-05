@@ -1,12 +1,16 @@
 import React from 'react';
-import {Text, View, Button, Modal} from 'react-native';
+import {Text, View,  Modal} from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import PostingCard from './PostingCard';
 import PublishFormPage from './PublishFormPage';
 import SearchBar2 from './SearchBar2.js';
-import {Container, Header, Content, Icon, Fab} from 'native-base';
+import {Container, Header, Content, Icon, Fab, Item, Input, Button} from 'native-base';
 
-class LinkusPage extends React.Component {
+export default class LinkusPage extends React.Component {
+  static navigationOptions = {
+    title: 'Link',
+  };
+
   state = {
     search: '',
     modalVisible: false,
@@ -45,14 +49,24 @@ class LinkusPage extends React.Component {
             value={search}
           />
         </Header>  */}
-        <Header>
+        {/*<Header style={{backgroundColor: "#FFFFFF"}}>
           <SearchBar2 />
           {/*<Button
             title="post"
             onPress={() => this.setState({modalVisible: true})}
           >
             <Text>post</Text>
-          </Button>*/}
+          </Button>
+        </Header>*/}
+
+        <Header searchBar rounded style={{backgroundColor: '#ffe066', height: 50}}>
+          <Item>
+            <Icon name="ios-search" />
+            <Input placeholder="Search" />
+          </Item>
+          <Button transparent>
+            <Text>Search</Text>
+          </Button>
         </Header>
 
         <Modal
@@ -113,4 +127,3 @@ class LinkusPage extends React.Component {
   }
 }
 
-export default LinkusPage;
