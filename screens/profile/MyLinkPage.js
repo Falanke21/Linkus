@@ -4,9 +4,9 @@ import {Button, ListItem, Divider} from 'react-native-elements';
 
 export default class MyLinkPage extends React.Component {
   static navigationOptions = {
-    title: '我的',
+    title: '我的Link',
   };
-  
+
   render() {
     return (
       <View>
