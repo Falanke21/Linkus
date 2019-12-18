@@ -4,13 +4,16 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {Ionicons} from '@expo/vector-icons';
 
-import LoginPage from './screens/security/LoginPage';
+import theme from "./screens/Data/Theme.json";
+
 import HomePage from './screens/home/HomePage';
 import LinkusPage from './screens/link/LinkusPage';
-import ProfilePage from './screens/profile/ProfilePage';
 import ForumPage from './screens/forum/ForumPage';
+import ProfilePage from './screens/profile/ProfilePage';
 import SettingPage from './screens/setting/SettingPage';
 import MyLinkPage from './screens/profile/MyLinkPage';
+import LoginPage from './screens/security/LoginPage';
+import SignupPage from './screens/security/SignupPage';
 
 
 const HomeStack = createStackNavigator(
@@ -20,7 +23,7 @@ const HomeStack = createStackNavigator(
   {
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: '#ffe066',
+        backgroundColor: theme.colors[0].color1,
       },
     },
   }
@@ -71,6 +74,7 @@ const ProfileStack = createStackNavigator(
 const SecurityStack = createStackNavigator(
   {
     Login: LoginPage,
+    Signup: SignupPage,
   },
   {
     defaultNavigationOptions: {

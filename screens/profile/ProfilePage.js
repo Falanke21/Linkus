@@ -11,6 +11,7 @@ import {
   faUser,
   faHandPeace,
 } from '@fortawesome/free-solid-svg-icons';
+import theme from "../Data/Theme.json";
 
 export default class ProfilePage extends React.Component {
   static navigationOptions = ({navigation}) => {
@@ -76,7 +77,7 @@ export default class ProfilePage extends React.Component {
                 key={i}
                 title={item.title}
                 titleStyle={{fontSize:16}}
-                leftIcon={{name: item.icon, color: '#000000'}}
+                leftIcon={{name: item.icon, color: "#000000"}}
                 onPress={() => this.pressList(item.link)}
                 containerStyle={{height: 50}}
                 //bottomDivider
@@ -97,6 +98,11 @@ const list = [
     title: '我的Link',
     icon: 'all-inclusive',
     link: 'MyLink',
+  },{
+    // icon use material
+    title: '发出的Link',
+    icon: 'all-inclusive',
+    link: 'LinkSent',
   },
   {
     title: '消息通知',

@@ -1,5 +1,13 @@
-[{
-    "Color1": "#ffe066",
-    "Color2": "#062958",
-    "Color3": "#DD5144"
-}]
+{
+    "colors": [{
+            "color1": "#ffe066",
+            "color2": "#062958",
+            "color3": "#DD5144"
+        },
+        {
+            "color1": "#75109A",
+            "color2": "#83CF6E",
+            "color3": "#f4a460"
+        }
+    ]
+}

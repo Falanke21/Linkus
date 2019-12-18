@@ -1,14 +1,25 @@
 import React from 'react';
-import {Text, View,  Modal} from 'react-native';
+import {Text, View, Modal} from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import PostingCard from './PostingCard';
 import PublishFormPage from './PublishFormPage';
 import SearchBar2 from './SearchBar2.js';
-import {Container, Header, Content, Icon, Fab, Item, Input, Button} from 'native-base';
+import theme from "../Data/Theme.json"
+import {
+  Container,
+  Header,
+  Content,
+  Icon,
+  Fab,
+  Item,
+  Input,
+  Button,
+} from 'native-base';
 
 export default class LinkusPage extends React.Component {
   static navigationOptions = {
     title: 'Link',
+    header: null,
   };
 
   state = {
@@ -41,7 +52,7 @@ export default class LinkusPage extends React.Component {
       // <PostingCard />
       // </View>
 
-      <Container>
+      <Container style={{backgroundColor: theme.colors[0].color1}}>
         {/* <Header>
           <SearchBar
             placeholder="Type Here..."
@@ -59,7 +70,16 @@ export default class LinkusPage extends React.Component {
           </Button>
         </Header>*/}
 
-        <Header searchBar rounded style={{backgroundColor: '#ffe066', height: 50}}>
+        <Header
+          searchBar
+          rounded
+          style={{
+            backgroundColor: '#FFF',
+            height: 60,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Item>
             <Icon name="ios-search" />
             <Input placeholder="Search" />
@@ -126,4 +146,3 @@ export default class LinkusPage extends React.Component {
     );
   }
 }
-

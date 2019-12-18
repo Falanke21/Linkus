@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TextInput} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Button, ListItem, Divider, Icon} from 'react-native-elements';
+import userData from './UserData.json';
+import styles from './Styles';
 
 export default class LoginPage extends React.Component {
   static navigationOptions = {
@@ -9,23 +11,24 @@ export default class LoginPage extends React.Component {
   };
 
   state = {
-    usernameInput: '',
+    emailInput: '',
     passwordInput: '',
-    correctUsername: 'ada',
+    correctEmail: 'ada',
     correctPassword: '666666',
     loginMessage: '',
   };
 
+  emailInputHandler(input) {
+    this.setState({emailInput: input});
+  }
+
   passwordInputHandler(input) {
     this.setState({passwordInput: input});
   }
-  usernameInputHandler(input) {
-    this.setState({usernameInput: input});
-  }
 
-  submitLoginHandler() {
+  onPressLoginHandler() {
     if (
-      this.state.usernameInput.toLowerCase() == this.state.correctUsername &&
+      this.state.emailInput.toLowerCase() == this.state.correctEmail &&
       this.state.passwordInput == this.state.correctPassword
     ) {
       console.log('correct!');
@@ -33,17 +36,21 @@ export default class LoginPage extends React.Component {
       this.props.navigation.navigate('Profile');
     } else {
       console.log('Incorrect');
-      this.setState({loginMessage: 'Incorrect Username or Password!'});
+      this.setState({loginMessage: 'Incorrect Email or Password!'});
     }
-    console.log(this.state.usernameInput);
+    console.log(this.state.emailInput);
     console.log(this.state.passwordInput);
+  }
+
+  onPressSignupHandler(){
+    this.props.navigation.navigate('Signup');
   }
 
   render() {
     //const {goBack} = this.props.navigation;
 
     return (
-      <View style={styles.loginBackground}>
+      <View style={styles.background}>
         <View style={styles.iconSection}>
           <Text
             style={{
@@ -57,13 +64,13 @@ export default class LoginPage extends React.Component {
           </Text>
         </View>
 
-        <View style={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <View style={styles.mainSection}>
           <View style={styles.inputBar}>
             <TextInput
               placeholder="UT Email"
               textContentType="username"
-              value={this.state.usernameInput}
-              onChangeText={username => this.usernameInputHandler(username)}
+              value={this.state.emailInput}
+              onChangeText={email => this.emailInputHandler(email)}
               autoCapitalize="none"
               autoCorrect={false}
               returnKeyType="next"
@@ -107,25 +114,41 @@ export default class LoginPage extends React.Component {
           <TouchableOpacity>
             <Text style={{color: 'blue'}}>Forgot your password?</Text>
           </TouchableOpacity>
-          <Text>{this.state.loginMessage}</Text>
-          <View
-            style={{
-              height: '20%',
-              width: '100%',
-              borderWidth: 0,
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column',
-            }}
-          >
+          <Text style={{color: '#C83266'}}>{this.state.loginMessage}</Text>
+
+          <View style={styles.loginButtonSection}>
             <Button
-              onPress={() => this.submitLoginHandler()}
-              title="Login"
+              onPress={() => this.onPressLoginHandler()}
+              title="登录"
               type="outline"
               containerStyle={{
                 width: '85%',
                 alignItems: 'center',
                 justifyContent: 'center',
+                paddingTop: 20,
+              }}
+              buttonStyle={{
+                width: '100%',
+                height: 50,
+                borderWidth: 2,
+                borderRadius: 25,
+                borderColor: '#062958',
+              }}
+              titleStyle={{
+                fontSize: 18,
+                color: '#062958',
+              }}
+            />
+
+            <Button
+              onPress={() => this.onPressSignupHandler()}
+              title="注册"
+              type="outline"
+              containerStyle={{
+                width: '85%',
+                alignItems: 'center',
+                justifyContent: 'center',
+                paddingTop: 20,
               }}
               buttonStyle={{
                 width: '100%',
@@ -140,20 +163,14 @@ export default class LoginPage extends React.Component {
               }}
             />
           </View>
-          <View
-            style={{
-              height: '30%',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
+          <View style={styles.bottomSection}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Profile')}
             >
               <Text style={{fontSize: 20}}>Cancel</Text>
             </TouchableOpacity>
             <Text> </Text>
-            <Text> username: {this.state.correctUsername} </Text>
+            <Text> email: {this.state.correctEmail} </Text>
             <Text> password: {this.state.correctPassword} </Text>
           </View>
         </View>
@@ -161,25 +178,3 @@ export default class LoginPage extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  loginBackground: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  iconSection: {
-    height: '30%',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
-  },
-  inputBar: {
-    flexDirection: 'row',
-    width: '100%',
-    borderWidth: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-  },
-});
