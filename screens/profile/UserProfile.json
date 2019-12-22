@@ -1,0 +1,14 @@
+{
+    "username": "是小黄鹦鹉",
+    "UTemail": "yellow.parrot",
+    "avatar": "https://mmbiz.qpic.cn/mmbiz_jpg/b0H0BzrNibtfpMiaicIZE4KQTYiaMU6Ficeg3RupwRSiaYkHU8tXpaMS4TG0yjGotua9w3MxOSPn20H0LmlxWDibeibiaicQ/640?wx_fmt=jpeg",
+    "campus": "UTSG",
+    "description": "咯咯哒咯咯哒",
+    "courses": ["课程编号1", "课程编号2"],
+    "contact": [
+        ["微信", "LittleYellowPARROT"],
+        ["手机", "114514"],
+        ["FACEBOOK", "lyPARROT"],
+        ["QQ", "404114514"],
+    ],
+}

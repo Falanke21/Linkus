@@ -11,7 +11,8 @@ import {
   faUser,
   faHandPeace,
 } from '@fortawesome/free-solid-svg-icons';
-import theme from "../Data/Theme.json";
+import theme from '../Data/Theme.json';
+import user from './UserProfile.json';
 
 export default class ProfilePage extends React.Component {
   static navigationOptions = ({navigation}) => {
@@ -47,8 +48,7 @@ export default class ProfilePage extends React.Component {
           <View style={styles.profileImageView}>
             <Avatar
               source={{
-                uri:
-                  'https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg',
+                uri: user.avatar
               }}
               avatarStyle={{width: 70, height: 70}}
               containerStyle={{width: 70, height: 70}}
@@ -63,8 +63,8 @@ export default class ProfilePage extends React.Component {
             />*/}
           </View>
           <View style={styles.profileNameView}>
-            <Text style={styles.profileNameFont}>大橙吱</Text>
-            <Text style={{color: 'gray'}}>My Name is Frank!</Text>
+            <Text style={styles.profileNameFont}>{user.username}</Text>
+            <Text style={{color: 'gray'}}>{user.description}</Text>
           </View>
         </View>
         <View style={{height: '1%'}}></View>
@@ -76,8 +76,8 @@ export default class ProfilePage extends React.Component {
               <ListItem
                 key={i}
                 title={item.title}
-                titleStyle={{fontSize:16}}
-                leftIcon={{name: item.icon, color: "#000000"}}
+                titleStyle={{fontSize: 16}}
+                leftIcon={{name: item.icon, color: '#000000'}}
                 onPress={() => this.pressList(item.link)}
                 containerStyle={{height: 50}}
                 //bottomDivider
@@ -98,7 +98,8 @@ const list = [
     title: '我的Link',
     icon: 'all-inclusive',
     link: 'MyLink',
-  },{
+  },
+  {
     // icon use material
     title: '发出的Link',
     icon: 'all-inclusive',

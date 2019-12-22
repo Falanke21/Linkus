@@ -124,6 +124,7 @@ export default class LoginPage extends React.Component {
                 textContentType="password"
                 value={this.state.passwordInput}
                 onChangeText={password => this.passwordInputHandler(password)}
+                maxLength={18}
                 autoCapitalize="none"
                 autoCorrect={false}
                 returnKeyType="next"
@@ -135,7 +136,6 @@ export default class LoginPage extends React.Component {
                   height: 20,
                   width: 250,
                   paddingRight: 15,
-
                   fontSize: 17,
                 }}
               />
@@ -161,6 +161,7 @@ export default class LoginPage extends React.Component {
                 textContentType="password"
                 value={this.state.confirmPasswordInput}
                 onChangeText={password => this.confirmInputHandler(password)}
+                maxLength={18}
                 autoCapitalize="none"
                 autoCorrect={false}
                 returnKeyType="next"
@@ -172,7 +173,6 @@ export default class LoginPage extends React.Component {
                   height: 20,
                   width: 250,
                   paddingRight: 15,
-
                   fontSize: 17,
                 }}
               />
@@ -192,8 +192,8 @@ export default class LoginPage extends React.Component {
               type="outline"
               containerStyle={{
                 width: '85%',
-                alignItems: 'center',
-                justifyContent: 'center',
+                //alignItems: 'center',
+                //justifyContent: 'center',
                 paddingTop: 20,
               }}
               buttonStyle={{
@@ -202,6 +202,8 @@ export default class LoginPage extends React.Component {
                 borderWidth: 2,
                 borderRadius: 25,
                 borderColor: '#062958',
+                //alignItems: 'center',
+                //justifyContent: 'center',
               }}
               titleStyle={{
                 fontSize: 18,

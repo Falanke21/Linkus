@@ -7,14 +7,20 @@ import {
   Left,
   Right,
   Button,
-  Icon,
   Text,
 } from 'native-base';
+import {Icon} from 'react-native-elements';
+
 export default class CardItemButton extends Component {
   render() {
     return (
       <Card>
-        <CardItem header button onPress={() => alert('咕咕咕')} style={{backgroundColor:"#FFFFFF"}}>
+        <CardItem
+          //header
+          button
+          onPress={() => alert('咕咕咕')}
+          style={{backgroundColor: '#FFFFFF'}}
+        >
           <Left>
             <Thumbnail
               source={{
@@ -24,8 +30,11 @@ export default class CardItemButton extends Component {
             />
             <Body>
               <Text>CSC3xx 找队友</Text>
-              <Text note>我一定不会鸽的</Text>
+              <Text note numberOfLines={1}>
+                我一定不会鸽的
+              </Text>
             </Body>
+            <Icon name="plus-one" />
           </Left>
         </CardItem>
       </Card>

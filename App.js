@@ -12,6 +12,7 @@ import ForumPage from './screens/forum/ForumPage';
 import ProfilePage from './screens/profile/ProfilePage';
 import SettingPage from './screens/setting/SettingPage';
 import MyLinkPage from './screens/profile/MyLinkPage';
+import MyInfoPage from './screens/profile/MyInfoPage';
 import LoginPage from './screens/security/LoginPage';
 import SignupPage from './screens/security/SignupPage';
 
@@ -59,6 +60,7 @@ const ProfileStack = createStackNavigator(
   {
     Profile: ProfilePage,
     MyLink: MyLinkPage,
+    MyInfo: MyInfoPage,
     Setting: SettingPage,
   },
   {

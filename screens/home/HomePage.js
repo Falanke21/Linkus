@@ -2,6 +2,10 @@ import React from 'react';
 import {Text, View, StatusBar} from 'react-native';
 
 export default class HomePage extends React.Component {
+  static navigationOptions = {
+    title: '首页',
+    //header: null,
+  };
   render() {
     return (
       <View

@@ -4,7 +4,7 @@ import {SearchBar} from 'react-native-elements';
 import PostingCard from './PostingCard';
 import PublishFormPage from './PublishFormPage';
 import SearchBar2 from './SearchBar2.js';
-import theme from "../Data/Theme.json"
+import theme from '../Data/Theme.json';
 import {
   Container,
   Header,
@@ -19,7 +19,7 @@ import {
 export default class LinkusPage extends React.Component {
   static navigationOptions = {
     title: 'Link',
-    header: null,
+    //header: null,
   };
 
   state = {
@@ -27,9 +27,9 @@ export default class LinkusPage extends React.Component {
     modalVisible: false,
   };
 
-  updateSearch = search => {
+  updateSearch(search) {
     this.setState({search});
-  };
+  }
 
   constructor(props) {
     super(props);
@@ -52,7 +52,7 @@ export default class LinkusPage extends React.Component {
       // <PostingCard />
       // </View>
 
-      <Container style={{backgroundColor: theme.colors[0].color1}}>
+      <Container>
         {/* <Header>
           <SearchBar
             placeholder="Type Here..."
@@ -70,7 +70,16 @@ export default class LinkusPage extends React.Component {
           </Button>
         </Header>*/}
 
-        <Header
+        <SearchBar
+          lightTheme
+          round
+          placeholder="搜索"
+          value={this.state.search}
+          onChangeText={search => this.updateSearch(search)}
+          containerStyle={{backgroundColor: '#FFFFFF', borderColor: '#FFFFFF'}}
+        />
+
+        {/*<Header
           searchBar
           rounded
           style={{
@@ -87,7 +96,7 @@ export default class LinkusPage extends React.Component {
           <Button transparent>
             <Text>Search</Text>
           </Button>
-        </Header>
+        </Header>*/}
 
         <Modal
           animationType="none"
