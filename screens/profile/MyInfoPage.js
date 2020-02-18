@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {Button, List, ListItem, Divider, Avatar} from 'react-native-elements';
 import theme from '../Data/Theme.json';
-import user from './UserProfile.json';
+import user from '../Data/UserProfile.json';
 
 export default class MyLinkPage extends React.Component {
   static navigationOptions = {

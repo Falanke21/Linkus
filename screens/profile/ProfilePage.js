@@ -12,7 +12,7 @@ import {
   faHandPeace,
 } from '@fortawesome/free-solid-svg-icons';
 import theme from '../Data/Theme.json';
-import user from './UserProfile.json';
+import user from '../Data/UserProfile.json';
 
 export default class ProfilePage extends React.Component {
   static navigationOptions = ({navigation}) => {

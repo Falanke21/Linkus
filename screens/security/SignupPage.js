@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TextInput} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Button, ListItem, Divider, Icon, Input} from 'react-native-elements';
-import userData from './UserData.json';
+import userData from '../Data/UserAccount.json';
 import styles from './Styles';
 
 export default class LoginPage extends React.Component {
