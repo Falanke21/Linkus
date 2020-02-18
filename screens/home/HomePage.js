@@ -54,6 +54,8 @@ export default class HomePage extends React.Component {
         >
           {images.map((image, index) => this.renderPage(image, index))}
         </Carousel>
+        <Text>这是Linkus首页</Text>
+        <Text>当前进行中项目：”找课友“，”找队友“</Text>
       </View>
     );
   }
