@@ -33,8 +33,7 @@ export default class HomePage extends React.Component {
     return (
       <View
         style={{
-          flex: 1,
-          justifyContent: "top"
+          flex: 1
         }}
       >
         <StatusBar
