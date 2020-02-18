@@ -53,6 +53,9 @@ export default class LoginPage extends React.Component {
 
   onPressSignupHandler() {
     console.log('submitted!');
+    console.log('注册信息：');
+    console.log('用户名：' + this.state.emailInput);
+    console.log('密码：' + this.state.passwordInput);
   }
 
   render() {
