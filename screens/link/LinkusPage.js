@@ -133,13 +133,7 @@ export default class LinkusPage extends React.Component {
           onPress={() => this.setState({modalVisible: true})}
         >
           <Icon name="add" />
-          {/*<Icon name="ios-arrow-up" />
-          <Button
-            onPress={() => this.setState({modalVisible: true})}
-            style={{backgroundColor: '#3B5998'}}
-          >
-            <Icon name="add" />
-          </Button>*/}
+
           <Button
             onPress={() =>
               alert(
