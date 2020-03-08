@@ -1,7 +1,8 @@
-import React from "react";
-import { Text, View, StatusBar } from "react-native";
+import React, { Fragment } from "react";
+import { Text, View, StatusBar, Button } from "react-native";
 import Carousel from "react-native-banner-carousel";
 import { StyleSheet, Image, Dimensions } from "react-native";
+import Overlay from "react-native-modal-overlay";
 
 const BannerWidth = Dimensions.get("window").width;
 const BannerHeight = 260;
@@ -17,6 +18,14 @@ export default class HomePage extends React.Component {
     title: "首页"
     //header: null,
   };
+
+  state = {
+    modalVisible: false
+  };
+
+  onClose = () => this.setState({ modalVisible: false });
+
+  onOpen = () => this.setState({ modalVisible: true });
 
   renderPage(image, index) {
     return (
@@ -56,6 +65,32 @@ export default class HomePage extends React.Component {
         </Carousel>
         <Text>这是Linkus首页</Text>
         <Text>当前进行中项目：”找课友“，”找队友“</Text>
+        <Button title="展示Modal的示例" onPress={() => this.onOpen()}></Button>
+
+        <Overlay
+          visible={this.state.modalVisible}
+          onClose={this.onClose}
+          closeOnTouchOutside
+          animationType="zoomIn"
+          containerStyle={{ backgroundColor: "rgba(37, 8, 10, 0.78)" }}
+          childrenWrapperStyle={{ backgroundColor: "#eee" }}
+          animationDuration={500}
+        >
+          {(hideModal, overlayState) => (
+            <Fragment>
+              <Text>啦啦啦</Text>
+              <Text>Some Modal Content</Text>
+              <Text>Some Modal Content</Text>
+              <Text>Some Modal Content</Text>
+              <Text>Some Modal Content</Text>
+              <Text>Some Modal Content</Text>
+              <Text>Some Modal Content</Text>
+              <Text>Some Modal Content</Text>
+
+              <Button title="关闭这货" onPress={hideModal}></Button>
+            </Fragment>
+          )}
+        </Overlay>
       </View>
     );
   }
