@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {Text, View, Modal} from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import PostingCard from './PostingCard';
 import PublishFormPage from './PublishFormPage';
 import SearchBar2 from './SearchBar2.js';
 import theme from '../Data/Theme.json';
+import Overlay from "react-native-modal-overlay";
+import ActivationPostingCard from './ActivationPostingCard';
 import {
   Container,
   Header,
@@ -15,6 +17,7 @@ import {
   Input,
   Button,
 } from 'native-base';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default class LinkusPage extends React.Component {
   static navigationOptions = {
@@ -25,6 +28,7 @@ export default class LinkusPage extends React.Component {
   state = {
     search: '',
     modalVisible: false,
+    modal2Visible: false
   };
 
   updateSearch(search) {
@@ -36,8 +40,13 @@ export default class LinkusPage extends React.Component {
     this.state = {
       active: false,
       modalVisible: false,
+      modal2Visible: false
     };
   }
+
+  onClose = () => this.setState({ modal2Visible: false});
+  onOpen = () => this.setState({ modal2Visible: true });
+
 
   render() {
     const {search} = this.state;
@@ -136,15 +145,40 @@ export default class LinkusPage extends React.Component {
 
           <Button
             onPress={() =>
-              alert(
-                "Choose a post to activate (except you can't choose currently :D)"
-              )
+              this.onOpen()
             }
             style={{backgroundColor: '#DD5144'}}
           >
             <Icon name="ios-flame" />
           </Button>
         </Fab>
+
+        <Overlay
+          visible={this.state.modal2Visible}
+          onClose={this.onClose}
+          closeOnTouchOutside
+          animationType="zoomIn"
+          containerStyle={{ backgroundColor: "rgba(37, 8, 10, 0.78)" }}
+          childrenWrapperStyle={{ backgroundColor: "#eee" }}
+          animationDuration={500}
+        >
+          {(hideModal, overlayState) => (
+            <Fragment>
+            <Text>我发布的</Text>
+              <ScrollView>
+                <ActivationPostingCard/>
+                <ActivationPostingCard/>
+                <ActivationPostingCard/>
+                <ActivationPostingCard/>
+                <ActivationPostingCard/>
+                <ActivationPostingCard/>
+                <ActivationPostingCard/>
+              </ScrollView>
+
+              <Icon name="ios-close-circle" onPress={hideModal} style = {{color: '#DD5144', borderRadius: 100, position: "absolute", top: 2, right: 2}}/>
+            </Fragment>
+          )}
+        </Overlay>        
       </Container>
     );
   }
