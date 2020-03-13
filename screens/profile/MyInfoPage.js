@@ -36,7 +36,8 @@ export default class MyLinkPage extends React.Component {
     //description: '',
     //contact: [],
 
-    isVisible: false,
+    isVisible_basic: false,
+    isVisible_contacts: false,
     changingType: 'DNE',
     changingTitle: 'DNE',
     changingContent: 'DNE',
@@ -82,14 +83,14 @@ export default class MyLinkPage extends React.Component {
   }
 
   componentWillUnmount() {
-    this.state = {isVisible: false};
+    this.state = {isVisible_basic: false, isVisible_contacts: false};
     console.log('will unmount');
   }
 
   pressList(item, key) {
     console.log('into pressList: ' + item.type);
     this.setState({
-      isVisible: item.canModify,
+      isVisible_basic: item.canModify,
       changingType: item.type,
       changingTitle: item.title,
       changingContent: item.content,
@@ -97,8 +98,8 @@ export default class MyLinkPage extends React.Component {
     });
     if (!item.canModify) {
       Alert.alert(
-        '',
         '此项不可修改！',
+        this.state.changingContent,
         [
           {
             text: 'Cancel',
@@ -111,12 +112,38 @@ export default class MyLinkPage extends React.Component {
     }
   }
 
+  pressContacts() {
+    console.log('into pressContact');
+    let cont = this.state.contacts;
+    this.setState({
+      isVisible_contacts: true,
+      changingType: 'contacts',
+      changingTitle: '联系方式',
+      changingContent: {
+        '1': [cont['1'][0], cont['1'][1]],
+        '2': [cont['2'][0], cont['2'][1]],
+        '3': [cont['3'][0], cont['3'][1]],
+        '4': [cont['4'][0], cont['4'][1]],
+      },
+    });
+    // {Object.keys(this.state.contacts).map((_key, i) => (
+    //   this.state.changingContent[_key] = this.state.contacts[_key]
+    // )}
+  }
+
   TextInputHandler(content) {
     this.setState({changingContent: content});
     console.log(this.state.changingContent);
   }
 
-  pressSubmit() {
+  contactInputHandler(key, type, content) {
+    //this.setState({changingContent: content});
+    this.state.changingContent[key][type] = content;
+    this.setState({changingContent: this.state.changingContent});
+    console.log(this.state.changingContent);
+  }
+
+  submitBasicInfo() {
     console.log(this.state.changingTitle);
     console.log(this.state.changingType);
     console.log(this.state.changingContent);
@@ -124,7 +151,7 @@ export default class MyLinkPage extends React.Component {
     let _type = this.state.changingType;
 
     if (_type == 'courses') {
-      this.state.basicInfo[_type].content = ["修改了1", "修改了2"]
+      this.state.basicInfo[_type].content = ['修改了1', '修改了2'];
     } else {
       this.state.basicInfo[_type].content = this.state.changingContent;
     }
@@ -135,11 +162,21 @@ export default class MyLinkPage extends React.Component {
         ': ' +
         this.state.basicInfo[_type].content
     );
-    this.setState({isVisible: false});
+    this.setState({isVisible_basic: false});
   }
 
-  showOverlay(item) {
-    console.log('Into showOverlay: ' + item.type);
+  submitContacts() {
+    console.log('submit contacts!');
+    // for (i = 1; i < 5; i++) {
+    //   this.state.contacts[num.toString(i)][0] = this.changingContent[num.toString(i)][0]
+    //   this.state.contacts[num.toString(i)][1] = this.changingContent[num.toString(i)][1]
+    // }
+    this.setState({contacts: this.state.changingContent});
+    this.setState({isVisible_contacts: false});
+  }
+
+  showOverlay_basic(item) {
+    console.log('Into showOverlay_basic: ' + item.type);
     //modifyingPart = <View></View>;
     console.log(item.type);
     if (item) {
@@ -159,6 +196,7 @@ export default class MyLinkPage extends React.Component {
               autoCapitalize="none"
               autoCorrect={false}
               returnKeyType="go"
+              maxLength={8}
               style={{
                 borderColor: '#062958',
                 borderWidth: 2,
@@ -247,10 +285,10 @@ export default class MyLinkPage extends React.Component {
 
     return (
       <Overlay
-        isVisible={this.state.isVisible}
+        isVisible={this.state.isVisible_basic}
         overlayBackgroundColor="white"
         windowBackgroundColor="rgba(000, 000, 000, .3)"
-        onBackdropPress={() => this.setState({isVisible: false})}
+        onBackdropPress={() => this.setState({isVisible_basic: false})}
         animationType="fade"
         width="80%"
         height="40%"
@@ -273,13 +311,106 @@ export default class MyLinkPage extends React.Component {
             title="取消"
             buttonStyle={{paddingVertical: 20, paddingHorizontal: 40}}
             type="clear"
-            onPress={() => this.setState({isVisible: false})}
+            onPress={() => this.setState({isVisible_basic: false})}
           />
           <Button
             title="修改"
             buttonStyle={{paddingVertical: 20, paddingHorizontal: 40}}
             type="clear"
-            onPress={() => this.pressSubmit()} //(this.state.changingContent)}
+            onPress={() => this.submitBasicInfo()} //(this.state.changingContent)}
+          />
+        </View>
+      </Overlay>
+    );
+  }
+
+  showOverlay_contacts() {
+    console.log('Into showOverlay_contacts');
+    //modifyingPart = <View></View>;
+    //console.log(item.type);
+
+    return (
+      <Overlay
+        isVisible={this.state.isVisible_contacts}
+        overlayBackgroundColor="white"
+        windowBackgroundColor="rgba(000, 000, 000, .3)"
+        onBackdropPress={() => this.setState({isVisible_contacts: false})}
+        animationType="fade"
+        width="80%"
+        height="50%"
+      >
+        <Text style={{alignSelf: 'center', fontSize: 20, padding: 15}}>
+          {this.state.changingTitle}
+        </Text>
+
+        <View
+          style={{
+            height: '60%',
+            width: '100%',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}
+        >
+          {Object.keys(this.state.changingContent).map((_key, i) => (
+            <View
+              style={{
+                height: '25%',
+                width: '100%',
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+              }}
+            >
+              <Text> {_key}. </Text>
+              <TextInput
+                placeholder="联系类型"
+                onChangeText={content =>
+                  this.contactInputHandler(_key, 0, content)
+                }
+                value={this.state.changingContent[_key][0]}
+                style={{width: '30%', height: '100%'}}
+              />
+              <Text> : </Text>
+              <TextInput
+                placeholder="联系方式"
+                onChangeText={content =>
+                  this.contactInputHandler(_key, 1, content)
+                }
+                value={this.state.changingContent[_key][1]}
+                style={{
+                  //borderColor: '#062958',
+                  //borderWidth: 2,
+                  //borderRadius: 25,
+                  paddingVertical: 5,
+                  width: '60%',
+                  height: '80%',
+                  alignContent: 'flex-start',
+                  //textAlign: 'center',
+                }}
+              />
+            </View>
+          ))}
+        </View>
+
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '30%',
+            flexDirection: 'row',
+          }}
+        >
+          <Button
+            title="取消"
+            buttonStyle={{paddingVertical: 20, paddingHorizontal: 40}}
+            type="clear"
+            onPress={() => this.setState({isVisible_contacts: false})}
+          />
+          <Button
+            title="修改"
+            buttonStyle={{paddingVertical: 20, paddingHorizontal: 40}}
+            type="clear"
+            onPress={() => this.submitContacts()} //(this.state.changingContent)}
           />
         </View>
       </Overlay>
@@ -325,22 +456,22 @@ export default class MyLinkPage extends React.Component {
               />
             </View>
           ))}
-          {this.showOverlay(this.state.basicInfo[this.state.changingKey])}
+          {this.showOverlay_basic(this.state.basicInfo[this.state.changingKey])}
         </View>
         <View style={{width: '100%', color: '#FF1'}}>
           <Text style={{fontSize: 16, padding: 15, fontWeight: 'bold'}}>
             联系方式
           </Text>
           <Divider />
-          {Object.keys(this.state.contacts).map((item, i) => (
+          {Object.keys(this.state.contacts).map((_key, i) => (
             <ListItem
               key={i}
-              title={item}
+              title={_key + ': ' + this.state.contacts[_key][0]}
               titleStyle={{fontSize: 16}}
-              rightTitle={this.state.contacts[item]}
+              rightTitle={this.state.contacts[_key][1]}
               rightTitleProps={{numberOfLines: 1}}
-              onPress={() =>
-                this.pressList('联系', item, this.state.contacts[item])
+              onPress={
+                () => this.pressContacts() //('联系', _key, this.state.contacts[_key])
               }
               containerStyle={{height: 50}}
               //bottomDivider
@@ -348,6 +479,7 @@ export default class MyLinkPage extends React.Component {
             />
           ))}
         </View>
+        {this.showOverlay_contacts()}
       </ScrollView>
     );
   }

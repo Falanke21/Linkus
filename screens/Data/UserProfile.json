@@ -6,9 +6,9 @@
     "description": "咯咯哒咯咯哒",
     "courses": ["课程编号1", "课程编号2"],
     "contacts": {
-        "微信": "LittleYellowPARROT",
-        "手机": "114514",
-        "FACEBOOK": "lyPARROT",
-        "QQ": "404114514"
+        "1": ["微信", "LittleYellowPARROT"],
+        "2": ["手机", "114514"],
+        "3": ["FACEBOOK", "lyPARROT"],
+        "4": ["QQ", "404114514"]
     }
 }
